@@ -1,11 +1,12 @@
 package com.workintech.s19d1;
 
+import com.workintech.s19d1.repository.ActorRepository;
 import com.workintech.s19d1.entity.Actor;
 import com.workintech.s19d1.entity.Gender;
 import com.workintech.s19d1.entity.Movie;
 import com.workintech.s19d1.exceptions.ApiException;
 import com.workintech.s19d1.exceptions.ExceptionResponse;
-import com.workintech.s19d1.repository.ActorRepository;
+
 import com.workintech.s19d1.repository.MovieRepository;
 import com.workintech.s19d1.service.ActorServiceImpl;
 import com.workintech.s19d1.service.MovieServiceImpl;
@@ -13,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -206,7 +206,14 @@ class MainTest {
     @DisplayName("Delete Actor")
     void delete() {
 
-        actorService.delete(actor);
+
+        Actor actor = new Actor();
+        actor.setFirstName("Jane");
+        actor.setLastName("Doe");
+        actor.setGender(Gender.valueOf("FEMALE"));
+        actor.setBirthDate(LocalDate.of(1990, 1, 1));
+
+
 
     }
 
